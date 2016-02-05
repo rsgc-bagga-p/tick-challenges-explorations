@@ -52,9 +52,22 @@ repeat {
     print("")
     
     }
+    
+    var eye = Float(eyes!)
+    var aten = Float(atennas!)
+    
+if (aten >= 3 && eye <= 4){
+    
+    print(TroyMartian)
+    
+} else if (aten <= 6 && eye > 2){
+    print(VladSaturnian)
+}else if (aten <= 2 && eye <= 3){
+    print(GraemeMercurian)
+    }
 
-    
-    
+
+
 } while validInput == false
 
 // Print one additional blank line to separate from exit code message that is automatically displayed

@@ -74,23 +74,69 @@ studentRandomPosition
 //    print("The current value is: \(studentRandomPosition[i])")
 //}
 // ABOVE: An example of using a "regular" loop to iterate over an array. We've illustrated a common run-time error - out of bounds condition. We ran over the end of the array.
+var highestValue = -1 //the highest number
+var highestValueIndex = -1 // the highest position
 
 for (index, value) in studentRandomPosition.enumerate(){
+    
     print("The index is \(index) and the value is \(value)")
     
-    }
-for i in studentRandomPosition.enumerate(){
-    
-    for j in studentRandomPosition.enumerate(){
+    if highestValue < value {
         
-        if studentRandomPosition[i]() < studentRandomPosition[j](){
-            
-            print("The highest number is \(studentRandomPosition[i]())")
-            
+        highestValue = value
+        highestValueIndex = index
+    }
+    
+}
+
+print("The highest number so far is \(highestValue) and the index is \(highestValueIndex)") //prints the highest number to the terminal
+
+
+//***Now finish the job
+//Very basic algorithm to randomize this list of students
+//
+//      -repeat unitl the unsorted list is empty
+//          - scan all the values in the unsorted list, find the highest value
+//          - add higest value to the end of the new list
+//          - move the corresponding student name to the end of the new list of names
+//          - remove name and the value from the original lists
+
+// Create the empty sorted list
+var studentListSorted = [String]() //list of names
+var studentRandomPositionSorted = [Int]()
+
+// Repeat until unsorted list is empty
+while !studentList.isEmpty {      //while studentList is NOT empty
+    
+    //find the highest value in the current unsorted list
+    highestValue = -1
+    highestValueIndex = -1
+    
+    // loop over the list
+    for (index, value) in studentRandomPosition.enumerate(){
+        
+        print("The index is \(index) and the value is \(value)")
+        
+        //check the highest value so far against the current value
+        if highestValue < value {
+            // current is higher, so it becomes the new highest
+            highestValue = value
+            highestValueIndex = index
         }
         
     }
     
+    // Put highest value and corresponding name at end of new list
+    studentListSorted.append(studentList[highestValueIndex])
+    studentRandomPositionSorted.append(highestValue)
+    
+    // Remove the highest value and name from the unsorted lists
+    studentList.removeAtIndex(highestValueIndex)
+    studentRandomPosition.removeAtIndex(highestValueIndex)
+    
 }
+studentListSorted
+studentRandomPositionSorted
+
 
 
